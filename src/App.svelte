@@ -34,6 +34,20 @@
 	  inThirtyDays = date;
 	}
 
+  let inSixtyDays;
+	$: {
+	  const date = new Date(start);
+	  date.setDate(date.getDate() + 60);
+	  inSixtyDays = date;
+	}
+
+  let inNinetyDays;
+	$: {
+	  const date = new Date(start);
+	  date.setDate(date.getDate() + 90);
+	  inNinetyDays = date;
+	}
+
 	function logChoice(date) {
 	  // eslint-disable-next-line
 	  console.log(`User chose ${date}.`);
@@ -120,7 +134,7 @@ var cal = new SvelteCalendar(&#123;
 	<p>You can also provide a `selectableCallback` prop which can be used to mark individual days between `start` and `end` as selectable.  This callback should accept a single date as an argument and return true (if selectable) or false (if unavailable).</p>
 
 	<div class='text-center'>
-		<Datepicker format={dateFormat} start={tomorrow} end={inThirtyDays} selectableCallback={noWeekendsSelectableCallback} />
+		<Datepicker format={dateFormat} start={inSixtyDays} end={inNinetyDays} selectableCallback={noWeekendsSelectableCallback} />
 	</div>
 
 	<p>You can bind to the `dateSelected` event, which has a data property `date`:</p>
